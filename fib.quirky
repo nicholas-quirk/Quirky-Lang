@@ -1,0 +1,22 @@
+// Here is a crude example of how to find the nth number in a Fibonacci sequence.
+// Fibpos is the position within the sequence to find and fibval is the value at
+// that position.
+
+int curr, prevone, prevtwo, fibpos, count;
+
+curr = 0;
+prevone = 0;
+prevtwo = 1;
+fibpos = 23;
+count = 0;
+
+dont_stop_if(count < (fibpos -1 +)) {
+  curr = prevone prevtwo +;
+  prevone = prevtwo;
+  prevtwo = curr;
+  count = count 1 +;
+}
+
+int fibval;
+
+fibval = prevtwo;

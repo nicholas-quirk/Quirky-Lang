@@ -1,0 +1,8 @@
+load "/Users/nicholasquirk/Binaries/k/lib/maude/lib/k-prelude"
+load "base.maude"
+load "builtins.maude"
+mod QUIRKY is 
+  including QUIRKY-BASE .
+  including QUIRKY-BUILTINS .
+eq mainModule = 'QUIRKY .
+endm

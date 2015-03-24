@@ -1,0 +1,136 @@
+module Program
+
+imports Common
+imports KBuiltinsBasic
+exports
+
+context-free syntax
+context-free priorities
+{
+	Block -> Stmt {}
+	Id "=" InsertDzAExp ";" -> Stmt {cons("Stmt1452Syn")}
+	"does" InsertDzBExp InsertDzBlock "if_not" Block -> Stmt {cons("Stmt1453Syn")}
+	"dont_stop_if" "(" InsertDzBExp ")" Block -> Stmt {cons("Stmt1455Syn")}
+	"function" "(" ")" Block -> Stmt {cons("Stmt1456Syn")}
+	"function" InsertDzId "(" ")" Block -> Stmt {cons("Stmt1457Syn")}
+} > {
+	Stmt Stmt -> Stmt {left, cons("Stmt1458Syn")}
+}
+
+context-free start-symbols
+Float Bool AExps DzFloat DzString DzInt AExp BExp String Stmt Id Int Ids DzBool Block K
+context-free syntax
+	"(" InsertDzBExp ")" -> BExp {cons("BExp1Bracket")}
+	"{" InsertDzStmt "}" -> Block {cons("Block1450Syn")}
+	AExp InsertDzAExp "%" -> AExp {left, cons("AExp1440Syn")}
+	AExp InsertDzAExp "+" -> AExp {left, cons("AExp1437Syn")}
+	"{" "}" -> Block {cons("Block1449Syn")}
+	AExp InsertDzAExp "*" -> AExp {left, cons("AExp1439Syn")}
+	BExp "and" BExp -> BExp {left, cons("BExp1448Syn")}
+	Bool -> BExp {}
+	AExp "<" AExp -> BExp {cons("BExp1442Syn")}
+	DzFloat -> Float {}
+	AExp "eq" AExp -> BExp {cons("BExp1447Syn")}
+	"(" InsertDzAExp ")" -> AExp {cons("AExp1Bracket")}
+	"!" BExp -> BExp {cons("BExp1446Syn")}
+	DzBool -> Bool {}
+	AExp ">" AExp -> BExp {cons("BExp1443Syn")}
+	Id -> AExp {}
+	{Id ","}* -> Ids {cons("Ids1ListSyn")}
+	Int -> AExp {}
+	"int" InsertDzIds ";" -> Stmt {cons("Stmt1454Syn")}
+	DzString -> String {}
+	AExp "<=" AExp -> BExp {cons("BExp1444Syn")}
+	AExp ">=" AExp -> BExp {cons("BExp1445Syn")}
+	DzInt -> Int {}
+	AExp InsertDzAExp "-" -> AExp {left, cons("AExp1438Syn")}
+	AExp InsertDzAExp "/" -> AExp {left, cons("AExp1436Syn")}
+	{AExp ","}* -> AExps {cons("AExps1ListSyn")}
+	BExp -> InsertDzBExp
+	AExp -> InsertDzAExp
+	Stmt -> InsertDzStmt
+	Id -> InsertDzId
+	Ids -> InsertDzIds
+	Block -> InsertDzBlock
+
+
+	DzDzString		-> DzString	{cons("DzString1Const")}
+	DzDzInt		-> DzInt	{cons("DzInt1Const")}
+	DzDzId		-> DzId	{cons("DzId1Const")}
+	DzDzBool		-> DzBool	{cons("DzBool1Const")}
+	DzDzFloat		-> DzFloat	{cons("DzFloat1Const")}
+
+	DzDzINT		-> DzDzInt
+	DzDzID		-> DzDzId
+	DzDzSTRING	-> DzDzString
+	DzDzFLOAT	-> DzDzFloat
+
+
+%% start symbols subsorts
+	KItem		-> K
+	Float		-> K
+	Bool		-> K
+	DzFloat		-> K
+	DzString		-> K
+	DzInt		-> K
+	AExp		-> K
+	BExp		-> K
+	String		-> K
+	Stmt		-> K
+	Id		-> K
+	Int		-> K
+	DzBool		-> K
+	Block		-> K
+lexical syntax
+	"true" -> DzDzBool
+	"false" -> DzDzBool
+
+
+	"does" -> DzDzID {reject}
+	"function" -> DzDzID {reject}
+	"dont_stop_if" -> DzDzID {reject}
+	"false" -> DzDzID {reject}
+	"if_not" -> DzDzID {reject}
+	"int" -> DzDzID {reject}
+	"true" -> DzDzID {reject}
+	"and" -> DzDzID {reject}
+	"eq" -> DzDzID {reject}
+
+lexical restrictions
+	%% follow restrictions
+
+
+lexical syntax
+	[A-Za-z\_][A-Za-z0-9\_]* -> IdDz
+	"does" -> IdDz {reject}
+	">=" -> IdDz {reject}
+	"function" -> IdDz {reject}
+	"dont_stop_if" -> IdDz {reject}
+	"false" -> IdDz {reject}
+	"!" -> IdDz {reject}
+	"if_not" -> IdDz {reject}
+	"int" -> IdDz {reject}
+	"%" -> IdDz {reject}
+	"*" -> IdDz {reject}
+	"true" -> IdDz {reject}
+	"+" -> IdDz {reject}
+	"(" -> IdDz {reject}
+	")" -> IdDz {reject}
+	"/" -> IdDz {reject}
+	"," -> IdDz {reject}
+	"-" -> IdDz {reject}
+	"and" -> IdDz {reject}
+	"<=" -> IdDz {reject}
+	";" -> IdDz {reject}
+	"}" -> IdDz {reject}
+	"{" -> IdDz {reject}
+	">" -> IdDz {reject}
+	"=" -> IdDz {reject}
+	"<" -> IdDz {reject}
+	"eq" -> IdDz {reject}
+context-free syntax
+	IdDz -> Id {cons("Id1Const")}
+
+
+context-free restrictions
+	Id -/- [A-Za-z0-9\_]

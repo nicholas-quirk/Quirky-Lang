@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<T>
+	<term sort="Stmt" cons="Stmt1458Syn" loc="(1,1,22,19)">
+		<term sort="Stmt" cons="Stmt1458Syn" loc="(5,1,20,12)">
+			<term sort="Stmt" cons="Stmt1458Syn" loc="(5,1,18,2)">
+				<term sort="Stmt" cons="Stmt1458Syn" loc="(5,1,11,11)">
+					<term sort="Stmt" cons="Stmt1458Syn" loc="(5,1,10,13)">
+						<term sort="Stmt" cons="Stmt1458Syn" loc="(5,1,9,13)">
+							<term sort="Stmt" cons="Stmt1458Syn" loc="(5,1,8,13)">
+								<term sort="Stmt" cons="Stmt1458Syn" loc="(5,1,7,10)">
+									<term sort="Stmt" cons="Stmt1454Syn" loc="(5,1,5,43)">
+										<term sort="Ids" cons="Ids1ListSyn" loc="(5,5,5,42)">
+											<const sort="Id" value="curr" loc="(5,5,5,9)"/>
+											<term sort="Ids" cons="Ids1ListSyn" loc="(5,5,5,42)">
+												<const sort="Id" value="prevone" loc="(5,11,5,18)"/>
+												<term sort="Ids" cons="Ids1ListSyn" loc="(5,5,5,42)">
+													<const sort="Id" value="prevtwo" loc="(5,20,5,27)"/>
+													<term sort="Ids" cons="Ids1ListSyn" loc="(5,5,5,42)">
+														<const sort="Id" value="fibpos" loc="(5,29,5,35)"/>
+														<term sort="Ids" cons="Ids1ListSyn" loc="(5,5,5,42)">
+															<const sort="Id" value="count" loc="(5,37,5,42)"/>
+															<empty sort="Ids" loc="(5,5,5,42)"/>
+															
+														</term>
+														
+													</term>
+													
+												</term>
+												
+											</term>
+											
+										</term>
+										
+									</term>
+									<term sort="Stmt" cons="Stmt1452Syn" loc="(7,1,7,10)">
+										<const sort="Id" value="curr" loc="(7,1,7,5)"/>
+										<const sort="#Int" value="0" loc="(7,8,7,9)"/>
+										
+									</term>
+									
+								</term>
+								<term sort="Stmt" cons="Stmt1452Syn" loc="(8,1,8,13)">
+									<const sort="Id" value="prevone" loc="(8,1,8,8)"/>
+									<const sort="#Int" value="0" loc="(8,11,8,12)"/>
+									
+								</term>
+								
+							</term>
+							<term sort="Stmt" cons="Stmt1452Syn" loc="(9,1,9,13)">
+								<const sort="Id" value="prevtwo" loc="(9,1,9,8)"/>
+								<const sort="#Int" value="1" loc="(9,11,9,12)"/>
+								
+							</term>
+							
+						</term>
+						<term sort="Stmt" cons="Stmt1452Syn" loc="(10,1,10,13)">
+							<const sort="Id" value="fibpos" loc="(10,1,10,7)"/>
+							<const sort="#Int" value="23" loc="(10,10,10,12)"/>
+							
+						</term>
+						
+					</term>
+					<term sort="Stmt" cons="Stmt1452Syn" loc="(11,1,11,11)">
+						<const sort="Id" value="count" loc="(11,1,11,6)"/>
+						<const sort="#Int" value="0" loc="(11,9,11,10)"/>
+						
+					</term>
+					
+				</term>
+				<term sort="Stmt" cons="Stmt1455Syn" loc="(13,1,18,2)">
+					<term sort="BExp" cons="BExp1442Syn" loc="(13,14,13,35)">
+						<const sort="Id" value="count" loc="(13,14,13,19)"/>
+						<bracket sort="AExp" loc="(13,22,13,35)">
+							<term sort="AExp" cons="AExp1437Syn" loc="(13,23,13,34)">
+								<const sort="Id" value="fibpos" loc="(13,23,13,29)"/>
+								<const sort="#Int" value="-1" loc="(13,30,13,32)"/>
+								
+							</term>
+							
+						</bracket>
+						
+					</term>
+					<term sort="Block" cons="Block1450Syn" loc="(13,37,18,2)">
+						<term sort="Stmt" cons="Stmt1458Syn" loc="(14,3,17,21)">
+							<term sort="Stmt" cons="Stmt1458Syn" loc="(14,3,16,18)">
+								<term sort="Stmt" cons="Stmt1458Syn" loc="(14,3,15,21)">
+									<term sort="Stmt" cons="Stmt1452Syn" loc="(14,3,14,28)">
+										<const sort="Id" value="curr" loc="(14,3,14,7)"/>
+										<term sort="AExp" cons="AExp1437Syn" loc="(14,10,14,27)">
+											<const sort="Id" value="prevone" loc="(14,10,14,17)"/>
+											<const sort="Id" value="prevtwo" loc="(14,18,14,25)"/>
+											
+										</term>
+										
+									</term>
+									<term sort="Stmt" cons="Stmt1452Syn" loc="(15,3,15,21)">
+										<const sort="Id" value="prevone" loc="(15,3,15,10)"/>
+										<const sort="Id" value="prevtwo" loc="(15,13,15,20)"/>
+										
+									</term>
+									
+								</term>
+								<term sort="Stmt" cons="Stmt1452Syn" loc="(16,3,16,18)">
+									<const sort="Id" value="prevtwo" loc="(16,3,16,10)"/>
+									<const sort="Id" value="curr" loc="(16,13,16,17)"/>
+									
+								</term>
+								
+							</term>
+							<term sort="Stmt" cons="Stmt1452Syn" loc="(17,3,17,21)">
+								<const sort="Id" value="count" loc="(17,3,17,8)"/>
+								<term sort="AExp" cons="AExp1437Syn" loc="(17,11,17,20)">
+									<const sort="Id" value="count" loc="(17,11,17,16)"/>
+									<const sort="#Int" value="1" loc="(17,17,17,18)"/>
+									
+								</term>
+								
+							</term>
+							
+						</term>
+						
+					</term>
+					
+				</term>
+				
+			</term>
+			<term sort="Stmt" cons="Stmt1454Syn" loc="(20,1,20,12)">
+				<term sort="Ids" cons="Ids1ListSyn" loc="(20,5,20,11)">
+					<const sort="Id" value="fibval" loc="(20,5,20,11)"/>
+					<empty sort="Ids" loc="(20,5,20,11)"/>
+					
+				</term>
+				
+			</term>
+			
+		</term>
+		<term sort="Stmt" cons="Stmt1452Syn" loc="(22,1,22,18)">
+			<const sort="Id" value="fibval" loc="(22,1,22,7)"/>
+			<const sort="Id" value="prevtwo" loc="(22,10,22,17)"/>
+			
+		</term>
+		
+	</term>
+	
+</T>

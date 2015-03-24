@@ -1,0 +1,92 @@
+\nonstopmode
+\PassOptionsToPackage{pdftex,usenames,dvipsnames,svgnames,x11names}{xcolor}
+\PassOptionsToPackage{pdftex}{hyperref}
+\documentclass{article}
+\usepackage[poster,style=bubble]{k}
+\title{QUIRKY}
+\begin{document}
+\begin{kdefinition}
+\maketitle
+\begin{module}{\moduleName{QUIRKY-SYNTAX}}
+
+\begin{syntaxBlock}{\nonTerminal{\sort{AExp}}}\syntax{{\nonTerminal{\sort{Int}}}}{}\syntaxCont{{\nonTerminal{\sort{Id}}}}{}\syntaxCont{{{\nonTerminal{\sort{AExp}}}}\mathrel{}{{\nonTerminal{\sort{AExp}}}}\terminal{/}}{\kattribute{strict}}\syntaxCont{{{\nonTerminal{\sort{AExp}}}}\mathrel{}{{\nonTerminal{\sort{AExp}}}}\terminal{+}}{\kattribute{strict}}\syntaxCont{{{\nonTerminal{\sort{AExp}}}}\mathrel{}{{\nonTerminal{\sort{AExp}}}}\terminal{-}}{\kattribute{strict}}\syntaxCont{{{\nonTerminal{\sort{AExp}}}}\mathrel{}{{\nonTerminal{\sort{AExp}}}}\terminal{*}}{\kattribute{strict}}\syntaxCont{{{\nonTerminal{\sort{AExp}}}}\mathrel{}{{\nonTerminal{\sort{AExp}}}}\terminal{\%}}{\kattribute{strict}}\syntaxCont{({{\nonTerminal{\sort{AExp}}}})}{\kattribute{bracket}}
+\end{syntaxBlock}
+
+\begin{syntaxBlock}{\nonTerminal{\sort{BExp}}}\syntax{{\nonTerminal{\sort{Bool}}}}{}\syntaxCont{{{\nonTerminal{\sort{AExp}}}}\terminal{<}{{\nonTerminal{\sort{AExp}}}}}{\kattribute{seqstrict}}\syntaxCont{{{\nonTerminal{\sort{AExp}}}}\terminal{>}{{\nonTerminal{\sort{AExp}}}}}{\kattribute{seqstrict}}\syntaxCont{{{\nonTerminal{\sort{AExp}}}}\terminal{<=}{{\nonTerminal{\sort{AExp}}}}}{\kattribute{seqstrict}}\syntaxCont{{{\nonTerminal{\sort{AExp}}}}\terminal{>=}{{\nonTerminal{\sort{AExp}}}}}{\kattribute{seqstrict}}\syntaxCont{{}\terminal{!}{{\nonTerminal{\sort{BExp}}}}}{\kattribute{strict}}\syntaxCont{{{\nonTerminal{\sort{AExp}}}}\terminal{eq}{{\nonTerminal{\sort{AExp}}}}}{\kattribute{strict}}\syntaxCont{{{\nonTerminal{\sort{BExp}}}}\terminal{and}{{\nonTerminal{\sort{BExp}}}}}{\kattribute{strict}(1)}\syntaxCont{({{\nonTerminal{\sort{BExp}}}})}{\kattribute{bracket}}
+\end{syntaxBlock}
+
+\begin{syntaxBlock}{\nonTerminal{\sort{Block}}}\syntax{\{\}}{}\syntaxCont{\{{{\nonTerminal{\sort{Stmt}}}}\}}{}
+\end{syntaxBlock}
+
+\begin{syntaxBlock}{\nonTerminal{\sort{Stmt}}}\syntax{{\nonTerminal{\sort{Block}}}}{}\syntaxCont{{{\nonTerminal{\sort{Id}}}}\terminal{=}{{\nonTerminal{\sort{AExp}}}}\terminal{;}}{\kattribute{strict}(2)}\syntaxCont{{}\terminal{does}{{\nonTerminal{\sort{BExp}}}}\mathrel{}{{\nonTerminal{\sort{Block}}}}\terminal{if\_not}{{\nonTerminal{\sort{Block}}}}}{\kattribute{strict}(1)}\syntaxCont{{}\terminal{int}{{\nonTerminal{\sort{Ids}}}}\terminal{;}}{}\syntaxCont{{}\terminal{dont\_stop\_if}({{\nonTerminal{\sort{BExp}}}}){{\nonTerminal{\sort{Block}}}}}{}\syntaxCont{{}\terminal{function}(){{\nonTerminal{\sort{Block}}}}}{}\syntaxCont{{}\terminal{function}{{\nonTerminal{\sort{Id}}}}(){{\nonTerminal{\sort{Block}}}}}{}\syntaxCont{{{\nonTerminal{\sort{Stmt}}}}\mathrel{}{{\nonTerminal{\sort{Stmt}}}}}{}
+\end{syntaxBlock}
+
+\begin{syntaxBlock}{\nonTerminal{\sort{Ids}}}\syntax{List\{{\nonTerminal{\sort{Id}}}, \mbox{``},\mbox{''}\}}{\kattribute{strict}}
+\end{syntaxBlock}
+
+\begin{syntaxBlock}{\nonTerminal{\sort{AExps}}}\syntax{List\{{\nonTerminal{\sort{AExp}}}, \mbox{``},\mbox{''}\}}{\kattribute{strict}}
+\end{syntaxBlock}
+\end{module}
+\begin{module}{\moduleName{QUIRKY}}
+
+\begin{syntaxBlock}{\nonTerminal{\sort{KResult}}}\syntax{{\nonTerminal{\sort{Int}}}}{}\syntaxCont{{\nonTerminal{\sort{Bool}}}}{}
+\end{syntaxBlock}
+\kconfig{\kall[blue]{T}{\kall[green]{k}{\variable[Stmt]{\$PGM}}
+\mathrel{}\kall[red]{state}{\dotCt{Map}}
+}
+}
+\krule{
+\kprefix[green]{k}{\reduce{\variable[Id]{X}}{\variable[K]{I}}}
+\mathrel{}\kmiddle[red]{state}{\variable[Id]{X}\mapsto\variable[K]{I}}
+}{}{}{}{}
+\krule{
+\reduce{{\variable[Int]{I1}}\mathrel{}{\variable[Int]{I2}}\terminal{/}}{{\variable[Int]{I1}}\mathrel{\div_{\scriptstyle\it Int}}{\variable[Int]{I2}}}}{{\variable[Int]{I2}}\mathrel{{=}{/}{=}_{\scriptstyle\it Int}}{\constant[\#Int]{0}}}{}{}{}
+\krule{
+\reduce{{\variable[Int]{I1}}\mathrel{}{\variable[Int]{I2}}\terminal{+}}{{\variable[Int]{I1}}\mathrel{+_{\scriptstyle\it Int}}{\variable[Int]{I2}}}}{}{}{}{}
+\krule{
+\reduce{{\variable[Int]{I1}}\mathrel{}{\variable[Int]{I2}}\terminal{-}}{{\variable[Int]{I1}}\mathrel{-_{\scriptstyle\it Int}}{\variable[Int]{I2}}}}{}{}{}{}
+\krule{
+\reduce{{\variable[Int]{I1}}\mathrel{}{\variable[Int]{I2}}\terminal{*}}{{\variable[Int]{I1}}\mathrel{\ast_{\scriptstyle\it Int}}{\variable[Int]{I2}}}}{}{}{}{}
+\krule{
+\reduce{{\variable[Int]{I1}}\mathrel{}{\variable[Int]{I2}}\terminal{\%}}{{\variable[Int]{I1}}\mathrel{\%_{\scriptstyle\it Int}}{\variable[Int]{I2}}}}{}{}{}{}
+\krule{
+\reduce{{\variable[Int]{I1}}\terminal{<}{\variable[Int]{I2}}}{{\variable[Int]{I1}}\mathrel{<_{\scriptstyle\it Int}}{\variable[Int]{I2}}}}{}{}{}{}
+\krule{
+\reduce{{\variable[Int]{I1}}\terminal{>}{\variable[Int]{I2}}}{{\variable[Int]{I1}}\mathrel{>_{\scriptstyle\it Int}}{\variable[Int]{I2}}}}{}{}{}{}
+\krule{
+\reduce{{\variable[Int]{I1}}\terminal{<=}{\variable[Int]{I2}}}{{\variable[Int]{I1}}\mathrel{\leq_{\scriptstyle\it Int}}{\variable[Int]{I2}}}}{}{}{}{}
+\krule{
+\reduce{{\variable[Int]{I1}}\terminal{>=}{\variable[Int]{I2}}}{{\variable[Int]{I1}}\mathrel{\geq_{\scriptstyle\it Int}}{\variable[Int]{I2}}}}{}{}{}{}
+\krule{
+\reduce{{\variable[Int]{I1}}\terminal{eq}{\variable[Int]{I2}}}{{\variable[Int]{I1}}\mathrel{{=}{=}_{\scriptstyle\it Int}}{\variable[Int]{I2}}}}{}{}{}{}
+\krule{
+\reduce{{}\terminal{!}{\variable[Bool]{T}}}{\neg_{\scriptstyle\it Bool}{\variable[Bool]{T}}}}{}{}{}{}
+\krule{
+\reduce{{\constant[\#Bool]{true}}\terminal{and}{\variable[K]{B}}}{\variable[K]{B}}}{}{}{}{}
+\krule{
+\reduce{{\constant[\#Bool]{false}}\terminal{and}{\AnyVar[K]}}{\constant[\#Bool]{false}}}{}{}{}{}
+\krule{
+\reduce{\{\}}{\dotCt{K}}}{}{}{\kattribute{structural}}{}
+\krule{
+\reduce{\{{\variable[K]{S}}\}}{\variable[K]{S}}}{}{}{\kattribute{structural}}{}
+\krule{
+\kprefix[green]{k}{\reduce{{\variable[K]{X}}\terminal{=}{\variable[Int]{I}}\terminal{;}}{\dotCt{K}}}
+\mathrel{}\kmiddle[red]{state}{\variable[K]{X}\mapsto\reduce{\AnyVar[K]}{\variable[Int]{I}}}
+}{}{}{}{}
+\krule{
+\reduce{{\variable[K]{S1}}\mathrel{}{\variable[K]{S2}}}{\variable[K]{S1}\kra\variable[K]{S2}}}{}{}{\kattribute{structural}}{}
+\krule{
+\reduce{{}\terminal{does}{\constant[\#Bool]{true}}\mathrel{}{\variable[K]{S}}\terminal{if\_not}{\AnyVar[K]}}{\variable[K]{S}}}{}{}{}{}
+\krule{
+\reduce{{}\terminal{does}{\constant[\#Bool]{false}}\mathrel{}{\AnyVar[K]}\terminal{if\_not}{\variable[K]{S}}}{\variable[K]{S}}}{}{}{}{}
+\krule{
+\reduce{{}\terminal{dont\_stop\_if}({\variable[K]{B}}){\variable[K]{S}}}{{}\terminal{does}{\left({\variable[K]{B}}\right)}\mathrel{}{\{{{\variable[K]{S}}\mathrel{}{{}\terminal{dont\_stop\_if}({\variable[K]{B}}){\variable[K]{S}}}}\}}\terminal{if\_not}{\{\}}}}{}{}{\kattribute{structural}}{}
+\krule{
+\kprefix[green]{k}{{}\terminal{int}{\reduce{{\variable[Id]{X}}\mathpunct{\terminalNoSpace{,}}{\variable[K]{Xs}}}{\variable[K]{Xs}}}\terminal{;}}
+\mathrel{}\kall[red]{state}{\variable[Map]{{\rho}}\mathrel{}\reduce{\dotCt{Map}}{\variable[Id]{X}\mapsto\constant[\#Int]{0}}}
+}{\neg_{\scriptstyle\it Bool}{\left({{\variable[Id]{X}}\terminal{in}{{}\terminal{keys}{\left({\variable[Map]{{\rho}}}\right)}}}\right)}}{}{}{}
+\krule{
+\reduce{{}\terminal{int}{\dotCt{Ids}}\terminal{;}}{\dotCt{K}}}{}{}{\kattribute{structural}}{}
+\end{module}
+\end{kdefinition}
+\end{document}
